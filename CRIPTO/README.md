@@ -1,5 +1,5 @@
 # CriptologicMSX
-Criar um port do criptologic do Odissey para o MSX usando Assembler Z80.
+Criar um port do criptologic do Odissey para o MSX usando Assembly Z80.
 
 Baixar o GitHub Desktop: https://desktop.github.com/
 
