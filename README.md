@@ -4,5 +4,8 @@
  # CRIPTO
  
  Criptologic para o processador Z80.
- CPC => código em assembly do Amstrad CPC 
+ 
+ CPC => código em assembly do Amstrad CPC
+ 
  MSX => código em assembly do MSX
+ 
