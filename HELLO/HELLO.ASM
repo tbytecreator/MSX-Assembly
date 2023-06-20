@@ -13,7 +13,7 @@ CHPUT:		equ 0x00A2	; Escreve caractere na tela
 
 ProgramStart:
 	push af
-		xor a
+		xor a			; A = 0 
 		call CLS
 	pop af
   	call INIT32
