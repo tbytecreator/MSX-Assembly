@@ -1,8 +1,8 @@
 ; =======================================================================
-; Meu primeiro Programa Assembly
-; Manoel Neto 2023-06-2023
+; Primeiros passos no ASM
 ; =======================================================================
-org &4000
+include "HWD\CONST.ASM"
+org romArea
 db "AB"
 dw ProgramStart
 db 00,00,00,00,00
@@ -45,4 +45,5 @@ ret
 Message:
   db "Ola Mundo!",13
 
-org &C000 ; PAD para 32K
+romPad:
+ ds romSize-(romPad-romArea),0
