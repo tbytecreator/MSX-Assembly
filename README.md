@@ -7,6 +7,7 @@
 
  Nosso primeiro programa em Assembly
  Aula relacionada:
+ https://www.youtube.com/watch?v=CF3NILdgsYM
 
 # CRIPTO
 
