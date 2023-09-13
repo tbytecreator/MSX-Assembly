@@ -1,25 +1,14 @@
 ; =======================================================================
 ; Primeiros passos no ASM
 ; =======================================================================
-include "HWD\CONST.ASM"
-include "HWD\BIOS.ASM"
-org romArea
-db "AB"
-dw ProgramStart
-db 00,00,00,00,00
+CLS		equ &BC14	; Limpa tela
+CHPUT		equ &BB5A	; Escreve caractere na tela
 
-ProgramStart:
-	push af
-		xor a			; A = 0 
-		call CLS
-	pop af
-  	call INIT32
-  	ld hl, Message
+org &8000
+	ld hl, Message
   	call PrintString
   	call NewLine
-  	DI
-  	Halt
-
+ 
 PrintString:
 	ld a,(hl)
 	cp 13
@@ -31,16 +20,11 @@ EndString:
 ret
 
 NewLine:
-	push af
-		ld a, 13
-		call CHPUT
-		ld a, 10
-		call CHPUT
-	pop af
+	ld a, 13
+	call CHPUT
+	ld a, 10
+	call CHPUT
 ret
 
 Message:
   db "Ola Mundo!",13
-
-romPad:
- ds romSize-(romPad-romArea),0

@@ -10,26 +10,26 @@
 ; ========================================================================================
 PegarFrase:
 	call SCR_MODE_CLEAR	; Limpar a tela 
-	call Home		; Bota o cursor na posicao inicial
+	call Home			; Bota o cursor na posicao inicial
 	ld hl,MsgUsuario1	; Carrega a primeira Mensagem para o usuario
 	call PrintString	; Imprime a mensagem
 	ld hl,StrFrase		; Carrega o endereco da frase
 	call LimpaString	; Limpar a Frase
 	ld hl,StrFrase		; Carrega o endereco da frase
-	ld b,0			; Zera o contador de letras
+	ld b,0				; Zera o contador de letras
 LoopFrase:
-	call KM_WAIT_CHAR	; ler um caracter
-	ld (hl),a		; guarda o ascii desse caracter
-	call TXT_OUTPUT		; imprime o caracter
-	inc hl			; proximo endereco
-	inc b			; aumenta o contador de letras
-	cp 13			; compara o carcter entrado com o ENTER(13)				
+	call KM_WAIT_CHAR		; ler um caracter
+	ld (hl),a				; guarda o ascii desse caracter
+	call TXT_OUTPUT			; imprime o caracter
+	inc hl					; proximo endereco
+	inc b					; aumenta o contador de letras
+	cp 13					; compara o carcter entrado com o ENTER(13)				
 	jp z,ValidaDuasLetras	; se a frase terminou por enter 
-	ld a,b			; prepara o contador para comparar
-	ld (NumTamFrase),a	; guarda o tamanho da frase digitada
-	cp 14			; compara o contador com 14
-	ret z			; se A-14 = 0 vc ja digitou 14 letras
-	jp LoopFrase		; pega o proximo
+	ld a,b					; prepara o contador para comparar
+	ld (NumTamFrase),a		; guarda o tamanho da frase digitada
+	cp 14					; compara o contador com 14
+	ret z					; se A-14 = 0 vc ja digitou 14 letras
+	jp LoopFrase			; pega o proximo
 ValidaDuasLetras:		
 	ld a,(NumTamFrase)	; prepara o contador para comparar
 	cp 2			; compara com 2 letras

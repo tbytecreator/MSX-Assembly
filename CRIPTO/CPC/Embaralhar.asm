@@ -10,7 +10,7 @@
 ; Imprimir a frase Embaralhada 				=> StrFraseEmb
 ; =========================================================================================
 Embaralhar:
-	xor a				; prepara primeira passada
+	xor a					; prepara primeira passada
 	ld (NumContEmb),a		; zera o contador de embaralhamento
 GravarProxima:	
 	call AcharPosSort		; achar a posicao sorteada 

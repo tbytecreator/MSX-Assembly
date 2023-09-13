@@ -16,15 +16,15 @@ org &8000
 	ld b,4 	
 	ld c,2
 GetSpriteAdress:
-	LD A,B			; a multiplicacao e feita por um loop
-	CP 0			; caso b seja zero, nao precisamos multiplicar
+	LD A,B					; a multiplicacao e feita por um loop
+	CP 0					; caso b seja zero, nao precisamos multiplicar
 	JR Z,PegouValorSoma 	; Vai para a soma do endereco base
-	LD A,0			; limpa o acumulador para inicar o loop
+	LD A,0					; limpa o acumulador para inicar o loop
 MATHMULTAGAIN:
-	ADD a,c			; soma o valor 
-	DJNZ MATHMULTAGAIN	; se ainda temos multiplicador continuamos no loop
+	ADD a,c					; soma o valor 
+	DJNZ MATHMULTAGAIN		; se ainda temos multiplicador continuamos no loop
 PegouValorSoma:
-	ld hl,8192		; Endereco base da tabela de atributos
+	ld hl,8192				; Endereco base da tabela de atributos
 IncrementarPonteiro:
 	cp 0
 	jp z,AcheiEndereco
