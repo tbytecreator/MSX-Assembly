@@ -1,8 +1,8 @@
 ; =======================================================================
-; Primeiros passos no ASM
+; Primeiros passos no ASM - Amstrad CPC
 ; =======================================================================
 CLS		equ &BC14	; Limpa tela
-CHPUT		equ &BB5A	; Escreve caractere na tela
+CHPUT	equ &BB5A	; Escreve caractere na tela
 
 org &8000
 	ld hl, Message
