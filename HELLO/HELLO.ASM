@@ -3,44 +3,29 @@
 ; =======================================================================
 include "HWD\CONST.ASM"
 include "HWD\BIOS.ASM"
+include "HWD\VAR.ASM"
+
 org romArea
-db "AB"
-dw ProgramStart
-db 00,00,00,00,00
+	db "AB"
+	dw ProgramStart
+	db 00,00,00,00,00
 
 ProgramStart:
-	push af
-		xor a			; A = 0 
-		call CLS
-	pop af
-  	call INIT32
-  	ld hl, Message
-  	call PrintString
-  	call NewLine
+	call LimparTela
+	call INIT32
+  	ld hl, Message1
+  	call ImprimeString
   	DI
   	Halt
 
-PrintString:
-	ld a,(hl)
-	cp 13
-	jp z,EndString
-	call CHPUT
-	inc hl
-	jp PrintString
-EndString:
-ret
+; =============================================================================
+; FIM PROGRAMA
+; =============================================================================
+include "HWD\LIB.ASM"
+include "HWD\PT-BR.ASM"
 
-NewLine:
-	push af
-		ld a, 13
-		call CHPUT
-		ld a, 10
-		call CHPUT
-	pop af
-ret
-
-Message:
-  db "Ola Mundo!",13
-
+; =============================================================================
+; PADDING
+; =============================================================================
 romPad:
  ds romSize-(romPad-romArea),0
