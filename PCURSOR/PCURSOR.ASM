@@ -4,7 +4,7 @@
 ; LUIZ CARLOS BITTENCOURT
 ; REVISTA CLUBE MSX No9 
 ; ===================================
-            ORG &FA75
+ORG &FA75
             LD HL,&09DA
             EX (SP),HL
             LD IX,&0A27
