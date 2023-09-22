@@ -7,7 +7,7 @@ include "HWD\VAR.ASM"
 
 org romArea
 	db "AB"
-	dw ProgramStart
+	dw Inicio
 	db 00,00,00,00,00
 
 Inicio:
