@@ -7,8 +7,8 @@ include "HWD\CONST.ASM"
 include "HWD\BIOS.ASM"
 include "HWD\VAR.ASM"
 
-org &810A
-
+org prgArea
+	
 Inicio:
 	call LimparTela
 	call INIT32
