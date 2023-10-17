@@ -37,29 +37,29 @@ ret
 
 AcharDivIdeal:
 	ld a,(NumTamFrase)		; pegar o tamanho da frase
-	ld b,a								; usar o tamanho da frase como divisor
-	ld a,128							; Dividir 128 pelo tamanho da frase
-	ld d,0								; contador de subtracao sucessivas
+	ld b,a					; usar o tamanho da frase como divisor
+	ld a,128				; Dividir 128 pelo tamanho da frase
+	ld d,0					; contador de subtracao sucessivas
 DivPorTamanho:
-	sub b 								; comeca a divisao pelo tamanho da frase
-	inc d									; aumenta o acumulador
-	jr nc, DivPorTamanho  ; repete enquanto nao tem "vai um"
-	dec d									; elimina o resto
-	ld a,d								; nesse momento D tem o divisior ideal
+	sub b 					; comeca a divisao pelo tamanho da frase
+	inc d					; aumenta o acumulador
+	jr nc, DivPorTamanho  	; repete enquanto nao tem "vai um"
+	dec d					; elimina o resto
+	ld a,d					; nesse momento D tem o divisior ideal
 	ld (NumDivIdeal),a		; nesse momento A tem o divisior ideal
 ret
 
 SortearNumero:
 	ld a,(NumDivIdeal)		; carrega o divisor ideal
-	ld b,a								; carrega o divisor ideal
-	ld a,r								; Gera um aleatorio entre 0 e 127
-	ld d,0								; contador de subtracao sucessivas
+	ld b,a					; carrega o divisor ideal
+	ld a,r					; Gera um aleatorio entre 0 e 127
+	ld d,0					; contador de subtracao sucessivas
 DividirPorIdeal:
-	sub b 								; comeca a divisao pelo divisor ideal
-	inc d									; aumenta o acumulador
-	jr nc, DividirPorIdeal; repete enquanto nao tem "vai um"
-	dec d									; elimina o resto
-	ld a,d								; prepara gravacao do numero
+	sub b 					; comeca a divisao pelo divisor ideal
+	inc d					; aumenta o acumulador
+	jr nc, DividirPorIdeal	; repete enquanto nao tem "vai um"
+	dec d					; elimina o resto
+	ld a,d					; prepara gravacao do numero
 GravaAleatorio:
 	ld (NumAleatorio),a		; grava na variavel
 ret

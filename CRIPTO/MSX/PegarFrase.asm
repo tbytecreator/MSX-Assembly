@@ -10,21 +10,21 @@
 ; =============================================================================
 PegarFrase:
 	ld a,NumPosYEntrada1 	; Prepara a linha para limpar
-	call LimparLinha			; Limpa a linha de entrada
+	call LimparLinha		; Limpa a linha de entrada
 	ld h,NumPosXEntradas	; posicao x da entrada
 	ld l,NumPosYEntrada1	; posicao y da entrada
-	call POSIT						; posiciona cursor
-	ld hl,StrFrase				; Carrega o endereco da frase
-	call LimpaString			; Limpar a Frase
-	ld hl,StrFrase				; Carrega o endereco da frase
-	ld b,0								; Zera o contador de letras
+	call POSIT				; posiciona cursor
+	ld hl,StrFrase			; Carrega o endereco da frase
+	call LimpaString		; Limpar a Frase
+	ld hl,StrFrase			; Carrega o endereco da frase
+	ld b,0					; Zera o contador de letras
 LoopFrase:
-	call CHGET						; ler um caracter
-	cp 17 								; valida seta
+	call CHGET				; ler um caracter
+	cp 17 					; valida seta
 	jp z,LoopFrase
-	cp 18 								; valida seta
+	cp 18 					; valida seta
 	jp z,LoopFrase
-	cp 19 								; valida seta
+	cp 19 					; valida seta
 	jp z,LoopFrase
 	cp 20 								; valida seta
 	jp z,LoopFrase
