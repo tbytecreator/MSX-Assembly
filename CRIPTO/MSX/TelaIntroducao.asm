@@ -36,32 +36,6 @@ TelaIntroducao:
   ; ==========================================================================
 
   ; ==========================================================================
-  ; Escreve Portado para MSX
-  ; ==========================================================================
-  ld b,NumPosXPortadoMsx
-  ld c,NumPosYPortadoMsx
-  call GetVDPScreenPos
-  ld d,h
-  ld e,l
-  ld bc,16                		; bytes a copiar
-  ld hl,MSXPattern        		; padrão da string
-  call LDIRVM             		; copio na VRAM
-  ; ==========================================================================
-
-  ; ==========================================================================
-  ; Escreve Manoel Neto
-  ; ==========================================================================
-  ld b,NumPosXManoelNeto
-  ld c,NumPosYManoelNeto
-  call GetVDPScreenPos
-  ld d,h
-  ld e,l
-  ld bc,11                		; bytes a copiar
-  ld hl,ManoelNetoPattern  		; padrão da string
-  call LDIRVM             		; copio na VRAM
-  ; ==========================================================================
-
-  ; ==========================================================================
   ; Mudar cor do titulo do jogo
   ; ==========================================================================
   ld de,ADRCOLORTBL           ; posição tabela de cores

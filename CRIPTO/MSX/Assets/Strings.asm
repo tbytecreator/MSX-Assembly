@@ -4,10 +4,6 @@
 ; Manoel Neto 2019-09-25
 ; Strings utilizadas no Criptologic Z80
 ; =============================================================================
-MsgUsuario1:
-	db "Criptologic 1.0 para MSX",13
-MsgUsuario2:
-	db "Digite uma frase <ENTER>",13
 MsgUsuario3:
 		db "Voce so cometeu ",13
 MsgUsuario4:
@@ -62,10 +58,10 @@ SpriteLinha:
 	; Achamos a posicao multiplicando o numero do sprite por 4 e somando ao
 	; endereco base da tabela de
 	; Sprite 	Padrao		Conteudo
-	; 0				XXXXXXXX	Posicao X
-	; 0				YYYYYYYY	Posicao Y
-	; 0				PPPPPPPP	Numero do azulejo na tabela de padroes
-	; 0				E---CCCC	E=Extendido---C=Cor
+	; 0			XXXXXXXX	Posicao X
+	; 0			YYYYYYYY	Posicao Y
+	; 0			PPPPPPPP	Numero do azulejo na tabela de padroes
+	; 0			E---CCCC	E=Extendido---C=Cor
 	; =======================================================================
 	; Para definir um sprite precisamos de 4 bytes temos 14 sprites, entao
 	; precisamos copiar para a tabela de atributos da VRAM 14*4 bytes(56)
@@ -84,18 +80,9 @@ SpriteLinha:
 	db 26,26,0,%00000101
 	db 27,27,0,%00000101
 	db 28,28,0,%00000101
-TodosOsChar:
-	; Padrao para imprimir todas as fontes
-	db 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25
-MSXPattern:
-	; Portado para MSX
-	db 16,15,18,20,1,4,15,26,16,1,18,1,26,13,19,23
 TituloPattern:
-	; Criptologic
-	db 3,18,9,16,20,15,12,15,7,9,3
-ManoelNetoPattern:
-	; Manoel Neto
-	db 13,1,14,15,5,12,26,14,5,20,15
+	; Select Game 
+	db 19,5,12,5,3,20,27,7,1,13,5
 AttributePattern:
 	db %01010001
 	db %10010001

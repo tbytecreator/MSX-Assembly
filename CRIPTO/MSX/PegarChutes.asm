@@ -2,9 +2,9 @@
 ; PegarChutes.asm
 ; =============================================================================
 ; Manoel Neto 2019-09-25
-; Pegar chute e gravar 												=> (CaracterTestar)
+; Pegar chute e gravar 							=> (CaracterTestar)
 ; Testar se o caracter esta na posicao atual 	=> (TestarCorreto)
-; Imprimir os erros 													=> (ImprimirErros)
+; Imprimir os erros 							=> (ImprimirErros)
 ; =============================================================================
 PegarChute:
 	ld h,NumPosXEntradas
@@ -55,7 +55,7 @@ AcharPosicaoTeste:
 	cp 0
 	jp z,AchouTeste
 	inc hl
-	dec a													; proximo teste
+	dec a									; proximo teste
 	jp AcharPosicaoTeste
 AchouTeste:
 	ld a,(hl)
@@ -98,10 +98,10 @@ CursorCorreto:
 		call POSIT
 		ld hl,MsgUsuario5
 		call PrintString
-		ld a,%0000001					; NVPPPPP
+		ld a,%0000001				; NVPPPPP
 		call PlaySound				; Toca som de letra correta
-		LD BC,&AFFF						; define o tempo de espera
-		call Delay						; aguarda
+		LD BC,&AFFF					; define o tempo de espera
+		call Delay					; aguarda
 		ld a,0
 		call PlaySound				; Para de tocar o som
 ret
@@ -114,7 +114,7 @@ CursorErrado:
 		call POSIT
 		ld hl,MsgUsuario6
 		call PrintString
-		ld a,%1101111					; NVPPPPP
+		ld a,%1101111				; NVPPPPP
 		call PlaySound				; Toca som de letra Errada
 		LD BC,&FFFF
 		call Delay

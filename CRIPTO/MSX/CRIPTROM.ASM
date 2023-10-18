@@ -32,8 +32,6 @@ loopInfinito:
 	ld h,NumPosXMensagens
 	ld l,NumPosYMensagemFinal
 	call POSIT
-	ld hl,MsgUsuario8
-	call PrintString
 	call CHGET
 	cp 13
 	jp z,startCode
@@ -52,7 +50,7 @@ include "Hardware\AY38910.ASM"
 include "Hardware\TMS9918.ASM"
 include "Library\Library.asm"
 include "Assets\Strings.asm"
-include "Assets\Sprites.asm"
+include "Assets\Patterns.asm"
 
 ; =============================================================================
 ; Padding

@@ -9,11 +9,7 @@ romArea                 equ &4000       ; Minha ROM começa aqui
 ramArea                 equ &E000       ; Inicio da área de variáveis
 
 NumPosXTituloJogo:      equ 10
-NumPosYTituloJogo:      equ 7
-NumPosXPortadoMsx:      equ 8
-NumPosYPortadoMsx:      equ 11
-NumPosXManoelNeto:      equ 10
-NumPosYManoelNeto:      equ 13
+NumPosYTituloJogo:      equ 9
 NumPosXCopyright:       equ 4
 NumPosYCopyright:       equ 14
 NumPosXMensagens:       equ 3
