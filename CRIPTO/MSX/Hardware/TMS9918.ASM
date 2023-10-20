@@ -4,23 +4,45 @@
 ; Manoel Neto 2019-10-04
 ; Biblioteca para uso do VDP do MSX 1
 ; =============================================================================
-; VDP MODO GRAFICO I (SCREEN 1)
+; PORTS 
 ; =============================================================================
-; Padrões de azulejos	=> 00000 ate 06143 (&H0000..&H07FF) => 6143 Bytes
-; Mapa dos ajulejos		=> 06144 ate 06911 (&H1800..&H1AFF)	=> 0767 Bytes
-; Tabela de atributos   => 06912 ate 07039 (&H1B00..&H1B7F)	=> 0127 Bytes
-; Paleta				=> 07040 ate 07087 (&H1B80..&H1BAF)	=> 0047 Bytes
-; Tabela de Cores 		=> 08192 ate 14335 (&H2000..&H37FF)	=> 6143 Bytes
-; Tabela de Sprites 	=> 14336 ate 16384 (&H3800..&H3FFF) => 2048 Bytes
+VDPDATA:			equ &98
+VDPCONTROL:         equ &99
+
 ; =============================================================================
-VDPDATA:              equ &98
-VDPCONTROL:           equ &99
-ADRPATTERNTBL:		  equ 0000
-ADRNAMESTBL:		  equ 6144
-ADRATRIBUTETBL:		  equ 6912
-ADRPALLETTBL:		  equ 7040
-ADRCOLORTBL:		  equ 8192
-ADRSPRITETBL:		  equ 14336
+; VDP MODO TEXTO 40X24 (SCREEN 0)
+; =============================================================================
+; Names table 		=> 0000H to 03BFH
+; Patterns table	=> 0800H to 0FFFH
+; =============================================================================
+S0NAMESTBL:		  	equ 0000H
+S0PATTERNTBL:		equ 0800H
+
+; =============================================================================
+; VDP MODO HIBRIDO 32X24 (SCREEN 1)
+; =============================================================================
+; Names table 				=> 1800H to 1AFFH
+; Character Pattern Table	=> 0000H to 07FFH
+; =============================================================================
+S1NAMESTBL:		  	equ 1800H
+S1CHARPATTERNTBL:	equ 0000
+ADRPATTERNTBL:		equ 0000
+ADRNAMESTBL:		equ 6144
+ADRATRIBUTETBL:		equ 6912
+ADRPALLETTBL:		equ 7040
+ADRCOLORTBL:		equ 8192
+ADRSPRITETBL:		equ 14336
+
+; =============================================================================
+; Carrega a Tabela de padroes de caracter
+; =============================================================================
+LoadCharPatternTable:
+	ld bc,224            	; bytes a copiar
+  	ld de,S1CHARPATTERNTBL  ; tabela de padrões na VRAM
+  	ld hl,CriptoFont 		; localização na RAM
+  	call LDIRVM             ; copio a tabela de padrões
+ret
+; =============================================================================
 
 ; =============================================================================
 ; Carrega a Tabela de padroes

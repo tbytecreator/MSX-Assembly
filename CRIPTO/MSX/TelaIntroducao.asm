@@ -21,6 +21,7 @@ TelaIntroducao:
   call INIT32                 ; inicializo a tela
   call LoadPatternTable       ; CARREGO A TABELA DE PADROES
   call LoadAtributteTable     ; CARREGO A TABELA DE ATRIBUTOS
+  call LoadCharPatternTable   ; CARREGO A TABELA DE CARACTERES
 
   ; ==========================================================================
   ; Escreve Titulo

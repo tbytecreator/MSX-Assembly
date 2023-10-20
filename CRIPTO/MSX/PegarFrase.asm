@@ -26,31 +26,31 @@ LoopFrase:
 	jp z,LoopFrase
 	cp 19 					; valida seta
 	jp z,LoopFrase
-	cp 20 								; valida seta
+	cp 20 					; valida seta
 	jp z,LoopFrase
-	cp 8 									; valida backspace
+	cp 8 					; valida backspace
 	jp z,LoopFrase
-	ld (hl),a							; guarda o ascii desse caracter
+	ld (hl),a				; guarda o ascii desse caracter
 	cp 13
 	jp z,NaoImprime
-	call CHPUT						; imprime o caracter
+	call CHPUT				; imprime o caracter
 NaoImprime:
-	inc hl								; proximo endereco
-	inc b									; aumenta o contador de letras
-	cp 13									; compara o carcter entrado com o ENTER(13)
+	inc hl					; proximo endereco
+	inc b					; aumenta o contador de letras
+	cp 13					; compara o carcter entrado com o ENTER(13)
 	jp z,ValidaDuasLetras	; se a frase terminou por enter
-	ld a,b								; prepara o contador para comparar
+	ld a,b					; prepara o contador para comparar
 	ld (NumTamFrase),a		; guarda o tamanho da frase digitada
-	cp 14									; compara o contador com 14
+	cp 14					; compara o contador com 14
 	jp z,AcabouFrase   		; se A-14 = 0 vc ja digitou 14 letras
-	jp LoopFrase					; pega o proximo
+	jp LoopFrase			; pega o proximo
 ValidaDuasLetras:
 	ld a,(NumTamFrase)		; prepara o contador para comparar
-	cp 2									; compara com 2 letras
-	jp nc,AcabouFrase			; se a >= 2 esta ok, retorna
-	call LimpaString			; senao limpa a string
-	jp PegarFrase					; e pega a mensagem novamente
+	cp 2					; compara com 2 letras
+	jp nc,AcabouFrase		; se a >= 2 esta ok, retorna
+	call LimpaString		; senao limpa a string
+	jp PegarFrase			; e pega a mensagem novamente
 AcabouFrase:
-	inc hl								; vai para o proximo espaco
-	ld (hl),13						; adiciona o fim da string
+	inc hl					; vai para o proximo espaco
+	ld (hl),13				; adiciona o fim da string
 ret
