@@ -27,8 +27,8 @@ S0PATTERNTBL:		equ &0800
 S1CHARPATTERNTBL:	equ &0000
 S1NAMESTBL:		  	equ &1800
 LetterAPos: 		equ &0200 
-ADRCOLORTBL:		equ 8192
-ADRATRIBUTETBL:		equ 6912
+ADRCOLORTBL:		equ &2000
+ADRATRIBUTETBL:		equ &1B00
 
 ; =============================================================================
 ; Carrega a Tabela de padroes de caracter

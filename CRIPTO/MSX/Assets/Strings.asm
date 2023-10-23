@@ -21,7 +21,7 @@ MsgUsuario8:
 MsgUsuario9:
 	db "UM JOGO DE MANOEL NETO",13
 LinhaReta:
-	db 0,0,0,0,0,0,0,0,0,0,0,0,0,0
+	db 64,64,64,64,64,64,64,64,64,64,64,64,64,64
 PadraoCores:
 	db %01010001
 	db %10110001

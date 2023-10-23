@@ -57,4 +57,3 @@ include "Assets\Patterns.asm"
 ; =============================================================================
 romPad:
  ds romSize-(romPad-romArea),0
-end

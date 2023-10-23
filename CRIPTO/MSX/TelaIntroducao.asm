@@ -40,8 +40,8 @@ TelaIntroducao:
   ld hl,PadraoCores    			  ; padrao de cores
   call LDIRVM             		; copio na VRAM
   ; ==========================================================================
-
   call ENASCR             		; religo a tela
+  
 LoopAguardarEnter:
   call CHGET
   cp 13
