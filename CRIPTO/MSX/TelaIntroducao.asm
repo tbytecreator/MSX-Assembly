@@ -19,21 +19,17 @@ TelaIntroducao:
   ld a,32                     ; preparo a largura da tela
   ld (LINL32),a           		; largura da tela em 32 colunas
   call INIT32                 ; inicializo a tela
-  call LoadPatternTable       ; CARREGO A TABELA DE PADROES
   call LoadAtributteTable     ; CARREGO A TABELA DE ATRIBUTOS
   call LoadCharPatternTable   ; CARREGO A TABELA DE CARACTERES
 
   ; ==========================================================================
   ; Escreve Titulo
   ; ==========================================================================
-  ld b,NumPosXTituloJogo
-  ld c,NumPosYTituloJogo
-  call GetVDPScreenPos
-  ld d,h
-  ld e,l
-  ld bc,11                		; bytes a copiar
-  ld hl,TituloPattern      		; padrão da string
-  call LDIRVM             		; copio na VRAM
+  ld h,NumPosXTituloJogo
+	ld l,NumPosYTituloJogo
+	call POSIT
+  ld hl,MsgUsuario1
+  call PrintString
   ; ==========================================================================
 
   ; ==========================================================================
@@ -41,7 +37,7 @@ TelaIntroducao:
   ; ==========================================================================
   ld de,ADRCOLORTBL           ; posição tabela de cores
   ld bc,32                		; bytes a copiar
-  ld hl,PadraoCores    				; padrao de cores
+  ld hl,PadraoCores    			  ; padrao de cores
   call LDIRVM             		; copio na VRAM
   ; ==========================================================================
 

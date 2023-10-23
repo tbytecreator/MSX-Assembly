@@ -4,20 +4,22 @@
 ; Manoel Neto 2019-09-25
 ; Strings utilizadas no Criptologic Z80
 ; =============================================================================
+MsgUsuario1:
+	db "SELECT GAME",13
 MsgUsuario3:
-		db "Voce so cometeu ",13
+	db "VOCE SO COMETEU ",13
 MsgUsuario4:
-		db " erros",13
+	db " ERROS",13
 MsgUsuario5:
-	db "Esta Correto! 8-)",13
+	db "ESTA CORRETO!",13
 MsgUsuario6:
-	db "Esta Errado. 8-(",13
+	db "ESTA ERRADO!",13
 MsgUsuario7:
-	db "Parabens! Acertou tudo!",13
+	db "PARABENS, ACERTOU TUDO!",13
 MsgUsuario8:
-	db "Aperte <ENTER> para jogar",13
+	db "APERTE ENTER PARA JOGAR",13
 MsgUsuario9:
-	db "Um jogo de Manoel Neto",13
+	db "UM JOGO DE MANOEL NETO",13
 LinhaReta:
 	db 0,0,0,0,0,0,0,0,0,0,0,0,0,0
 PadraoCores:
@@ -80,9 +82,6 @@ SpriteLinha:
 	db 26,26,0,%00000101
 	db 27,27,0,%00000101
 	db 28,28,0,%00000101
-TituloPattern:
-	; Select Game 
-	db 19,5,12,5,3,20,27,7,1,13,5
 AttributePattern:
 	db %01010001
 	db %10010001

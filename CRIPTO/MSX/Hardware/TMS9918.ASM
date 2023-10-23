@@ -15,8 +15,8 @@ VDPCONTROL:         equ &99
 ; Names table 		=> 0000H to 03BFH
 ; Patterns table	=> 0800H to 0FFFH
 ; =============================================================================
-S0NAMESTBL:		  	equ 0000H
-S0PATTERNTBL:		equ 0800H
+S0NAMESTBL:		  	equ &0000
+S0PATTERNTBL:		equ &0800
 
 ; =============================================================================
 ; VDP MODO HIBRIDO 32X24 (SCREEN 1)
@@ -24,32 +24,18 @@ S0PATTERNTBL:		equ 0800H
 ; Names table 				=> 1800H to 1AFFH
 ; Character Pattern Table	=> 0000H to 07FFH
 ; =============================================================================
-S1NAMESTBL:		  	equ 1800H
-S1CHARPATTERNTBL:	equ 0000
-ADRPATTERNTBL:		equ 0000
-ADRNAMESTBL:		equ 6144
-ADRATRIBUTETBL:		equ 6912
-ADRPALLETTBL:		equ 7040
+S1CHARPATTERNTBL:	equ &0000
+S1NAMESTBL:		  	equ &1800
+LetterAPos: 		equ &0200 
 ADRCOLORTBL:		equ 8192
-ADRSPRITETBL:		equ 14336
+ADRATRIBUTETBL:		equ 6912
 
 ; =============================================================================
 ; Carrega a Tabela de padroes de caracter
 ; =============================================================================
 LoadCharPatternTable:
 	ld bc,224            	; bytes a copiar
-  	ld de,S1CHARPATTERNTBL  ; tabela de padrões na VRAM
-  	ld hl,CriptoFont 		; localização na RAM
-  	call LDIRVM             ; copio a tabela de padrões
-ret
-; =============================================================================
-
-; =============================================================================
-; Carrega a Tabela de padroes
-; =============================================================================
-LoadPatternTable:
-	ld bc,224            	; bytes a copiar
-  	ld de,ADRPATTERNTBL     ; tabela de padrões na VRAM
+  	ld de,LetterAPos  		; tabela de padrões na VRAM
   	ld hl,CriptoFont 		; localização na RAM
   	call LDIRVM             ; copio a tabela de padrões
 ret
@@ -63,18 +49,6 @@ LoadAtributteTable:
   	ld de,ADRATRIBUTETBL    ; tabela de padrões na VRAM
   	ld hl,AttributePattern  ; localização na RAM
   	call LDIRVM             ; copio a tabela de padrões
-ret
-; =============================================================================
-
-
-; =============================================================================
-; Carrega a Tabela de sprites
-; =============================================================================
-LoadSpritesTable:
-	ld bc,224            	; bytes a copiar
-  	ld de,ADRSPRITETBL	    ; tabela de sprites na VRAM
-  	ld hl,CriptoFont		; localização na RAM
-  	call LDIRVM             ; copio a tabela de sprites
 ret
 ; =============================================================================
 
