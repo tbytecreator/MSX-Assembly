@@ -37,6 +37,5 @@ DesenharTela:
 	ld bc,14               		; bytes a copiar
 	ld hl,LinhaReta	   			; Padrao da tabela de nomes
 	call LDIRVM            		; copio na VRAM
-
 	call ENASCR
 ret

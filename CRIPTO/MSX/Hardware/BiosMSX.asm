@@ -166,9 +166,9 @@ RAWPRT:		equ 0xF418			; OUTDO: 0=prefixos gráficos,1=envia sem tratamento
 VLZADR:		equ 0xF419			; Temporário usado pela função VAL do BASIC
 VLZDAT:		equ 0xF41B			; Temporário usado pela função VAL do BASIC
 KBFMIN:		equ 0xF41E			; Utilizado no tratamento de erros do BASIC
-KBUF:		  equ 0xF41F		  ; Utilizado no tratamento de erros do BASIC (318)
+KBUF:		equ 0xF41F		    ; Utilizado no tratamento de erros do BASIC (318)
 BUFMIN:		equ 0xF55D			; Utilizado na entrada de linhas BASIC
-BUF:		  equ 0xF55E		  ; Utilizado na entrada de linhas BASIC (259)
+BUF:		equ 0xF55E		    ; Utilizado na entrada de linhas BASIC (259)
 TTYPOS:		equ 0xF661			; Posição de tela atual, usada pelo PRINT
 DIMFLG:		equ 0xF662			; Usado pelo interpretador BASIC na instrução DIM
 VALTYP:		equ 0xF663			; Usado pelo interpretador BASIC
@@ -190,14 +190,14 @@ ENDFOR:		equ 0xF6A1			; Usada pelo interpretador BASIC (loops FOR)
 DATLIN:		equ 0xF6A3			; Linha do programa BASIC do item DATA atual
 SUBFLG:		equ 0xF6A5			; Usada pelo interpretador BASIC
 FLGINP:		equ 0xF6A6			; BASIC: distingue INPUT (0) de READ (1-255)
-TEMP:		  equ 0xF6A7			; Variável temporária (interpretador BASIC)
+TEMP:		equ 0xF6A7			; Variável temporária (interpretador BASIC)
 PTRFLG:		equ 0xF6A9			; Usada pelo interpretador BASIC
 AUTFLG:		equ 0xF6AA			; Flag do modo AUTO do BASIC
 AUTLIN:		equ 0xF6AB			; Número da linha AUTO atual (BASIC)
 AUTINC:		equ 0xF6AD			; Incremento atual do AUTO (BASIC)
 SAVTXT:		equ 0xF6AF			; Usado pelo manipulador de erro (BASIC)
 ERRLIN:		equ 0xF6B3			; Número da linha que gerou o erro (BASIC)
-DOT:		  equ 0xF6B5			; Usada pelo interpretador BASIC
+DOT:		equ 0xF6B5			; Usada pelo interpretador BASIC
 ERRTXT:		equ 0xF6B7			; Usada pelo interpretador BASIC (RESUME)
 ONELIN:		equ 0xF6B9			; Usada pelo interpretador BASIC (ON ERROR GOTO)
 ONEFLG:		equ 0xF6BB			; Usada pelo interpretador BASIC (ON ERROR GOTO)
@@ -225,11 +225,11 @@ TRCFLG:		equ 0xF7C4			; Ativado quando TRON está ligado (BASIC)
 FBUFFR:		equ 0xF7C5			; Buffer de conversão numérica (BASIC)
 DECTM2:		equ 0xF7F2			; Variável temporária (interpretador BASIC)
 DECCNT:		equ 0xF7F4			; Variável temporária (interpretador BASIC)
-DAC:		  equ 0xF7F6			; Buffer de avaliação de expressão do BASIC
+DAC:		equ 0xF7F6			; Buffer de avaliação de expressão do BASIC
 ARGUSR:		equ 0xF7F8			; ?
 HOLD8:		equ 0xF806			; Buffer temporário de multiplicação (BASIC)
-ARG:		  equ 0xF847			; Buffer de avaliação de expressão do BASIC
-RNDX:		  equ 0xF857			; Contém o último número aleatório (precisão dupla)
+ARG:		equ 0xF847			; Buffer de avaliação de expressão do BASIC
+RNDX:		equ 0xF857			; Contém o último número aleatório (precisão dupla)
 MAXFIL:		equ 0xF85F			; Número de buffers de E/S alocados (BASIC)
 FILTAB:		equ 0xF860			; Aponta tabela de FCBs dos buffers de E/S (BASIC)
 NULBUF:		equ 0xF862			; Aponta para o buffer de E/S
@@ -244,7 +244,7 @@ NAMBAS:		equ 0xF922			; Base da tabela de nomes no modo de video atual
 CGPBAS:		equ 0xF924			; Base da tabela de caracteres no modo de video atual
 PATBAS:		equ 0xF926			; Base da tabela de imagens de sprites no modo de video atual
 ATRBAS:		equ 0xF928			; Base da tabela de atributos de sprites no modo de ví deo atual
-CLOC:		  equ 0xF92A			; Endereço do pixel atual (funções gráficas da BIOS)
+CLOC:		equ 0xF92A			; Endereço do pixel atual (funções gráficas da BIOS)
 CMASK:		equ 0xF92C			; Máscara do pixel atual
 MINDEL:		equ 0xF92D			; Usado pela instrução LINE
 MAXDEL:		equ 0xF92F			; Usado pela instrução LINE
@@ -287,9 +287,9 @@ MCLPTR:		equ 0xFB3C			; Aponta para caractere de macro-linguagem sendo analisado
 QUEUEN:		equ 0xFB3E			; Fila atual do interpretador PLAY
 MUSICF:		equ 0xFB3F			; Usado pelo interpretador BASIC (PLAY)
 PLACNT:		equ 0xFB40			; Usado pelo interpretador BASIC (PLAY)
-VCBA:		  equ 0xFB41			; Buffer com parâmetros da voz A do PLAY
-VCBB:		  equ 0xFB66			; Buffer com parâmetros da voz B do PLAY
-VCBC:		  equ 0xFB8B			; Buffer com parâmetros da voz C do PLAY
+VCBA:		equ 0xFB41			; Buffer com parâmetros da voz A do PLAY
+VCBB:		equ 0xFB66			; Buffer com parâmetros da voz B do PLAY
+VCBC:		equ 0xFB8B			; Buffer com parâmetros da voz C do PLAY
 ENSTOP:		equ 0xFBB0			; Se diferente de 0, faz warm boot quando CODE+GRAPH+CTRL+SHIFT forem pressionadas
 BASROM:		equ 0xFBB1			; Ativa (0) ou desativa (1-255) manipulador de CTRL+STOP
 LINTTB:		equ 0xFBB2			; Variável interna de funções da BIOS
@@ -307,8 +307,8 @@ BOTTOM:		equ 0xFC48			; Armazena o início da RAM usada pelo interpretador BASIC
 TRPTBL:		equ 0xFC4C			; Usado pelas instruções de interrupção (ON...) do BASIC
 RTYCNT:		equ 0xFC9A			; Não-utilizada
 INTFLG:		equ 0xFC9B			; Flag de detecção de CTRL-STOP (3) e STOP (4)
-PADY:		  equ 0xFC9C			; Última coordenada Y do tablet
-PADX:		  equ 0xFC9D			; Última coordenada X do tablet
+PADY:		equ 0xFC9C			; Última coordenada Y do tablet
+PADX:		equ 0xFC9D			; Última coordenada X do tablet
 JIFFY:		equ 0xFC9E			; Contador incrementado a cada interrupção do VDP
 INTVAL:		equ 0xFCA0			; Duração do intervalo do ON INTERVAL (BASIC)
 INTCNT:		equ 0xFCA2			; Contador do ON INTERVAL (BASIC)

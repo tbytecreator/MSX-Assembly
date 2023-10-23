@@ -16,10 +16,6 @@ MsgUsuario6:
 	db "ESTA ERRADO!",13
 MsgUsuario7:
 	db "PARABENS, ACERTOU TUDO!",13
-MsgUsuario8:
-	db "APERTE ENTER PARA JOGAR",13
-MsgUsuario9:
-	db "UM JOGO DE MANOEL NETO",13
 LinhaReta:
 	db 64,64,64,64,64,64,64,64,64,64,64,64,64,64
 PadraoCores:

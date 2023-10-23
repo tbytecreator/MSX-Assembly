@@ -7,6 +7,7 @@
 ; Imprimir os erros 							=> (ImprimirErros)
 ; =============================================================================
 PegarChute:
+	call CHGCAP
 	ld h,NumPosXEntradas
 	ld l,NumPosYEntrada2
 	call POSIT
@@ -91,33 +92,33 @@ ImprimirErros:
 ret
 
 CursorCorreto:
-		ld a,NumPosYMensagens
-		call LimparLinha
-		ld h,NumPosXMensagens
-		ld l,NumPosYMensagens
-		call POSIT
-		ld hl,MsgUsuario5
-		call PrintString
-		ld a,%0000001				; NVPPPPP
-		call PlaySound				; Toca som de letra correta
-		LD BC,&AFFF					; define o tempo de espera
-		call Delay					; aguarda
-		ld a,0
-		call PlaySound				; Para de tocar o som
+	ld a,NumPosYMensagens
+	call LimparLinha
+	ld h,NumPosXMensagens
+	ld l,NumPosYMensagens
+	call POSIT
+	ld hl,MsgUsuario5
+	call PrintString
+	ld a,%0000001				; NVPPPPP
+	call PlaySound				; Toca som de letra correta
+	LD BC,&AFFF					; define o tempo de espera
+	call Delay					; aguarda
+	ld a,0
+	call PlaySound				; Para de tocar o som
 ret
 
 CursorErrado:
-		ld a,NumPosYMensagens
-		call LimparLinha
-		ld h,NumPosXMensagens
-		ld l,NumPosYMensagens
-		call POSIT
-		ld hl,MsgUsuario6
-		call PrintString
-		ld a,%1101111				; NVPPPPP
-		call PlaySound				; Toca som de letra Errada
-		LD BC,&FFFF
-		call Delay
-		ld a,0
-		call PlaySound				; Para de tocar o som
+	ld a,NumPosYMensagens
+	call LimparLinha
+	ld h,NumPosXMensagens
+	ld l,NumPosYMensagens
+	call POSIT
+	ld hl,MsgUsuario6
+	call PrintString
+	ld a,%1101111				; NVPPPPP
+	call PlaySound				; Toca som de letra Errada
+	LD BC,&FFFF
+	call Delay
+	ld a,0
+	call PlaySound				; Para de tocar o som
 ret
