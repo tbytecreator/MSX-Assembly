@@ -6,8 +6,6 @@
 TelaIntroducao:
   call DISSCR             		; desligo a exibição da tela
   call LimparTela             ; limpo a tela  
-  ld a,1
-  ld (CSRSW),a                ; Apaga o cursor
   ld a,15
   ld (FORCLR),a               ; seto a cor da fonte
   ld a,1
@@ -21,7 +19,6 @@ TelaIntroducao:
   call INIT32                 ; inicializo a tela
   call LoadAtributteTable     ; CARREGO A TABELA DE ATRIBUTOS
   call LoadCharPatternTable   ; CARREGO A TABELA DE CARACTERES
-
   ; ==========================================================================
   ; Escreve Titulo
   ; ==========================================================================
@@ -31,23 +28,17 @@ TelaIntroducao:
   ld hl,MsgUsuario1
   call PrintString
   ; ==========================================================================
-
-  ; ==========================================================================
   ; Mudar cor do titulo do jogo
   ; ==========================================================================
   ld de,ADRCOLORTBL           ; posição tabela de cores
   ld bc,32                		; bytes a copiar
   ld hl,PadraoCores    			  ; padrao de cores
   call LDIRVM             		; copio na VRAM
-  ; ==========================================================================
   call ENASCR             		; religo a tela
-  
 LoopAguardarEnter:
   call CHGET
   cp 13
   jr z,FimTelaIntro
   jr LoopAguardarEnter
 FimTelaIntro:
-  xor a
-  ld (CSRSW),a                ; Liga o cursor
 ret

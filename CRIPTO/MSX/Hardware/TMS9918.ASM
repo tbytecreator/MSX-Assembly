@@ -27,7 +27,7 @@ S0PATTERNTBL:		equ &0800
 S1CHARPATTERNTBL:	equ &0000
 S1NAMESTBL:		  	equ &1800
 LetterCAPos: 		equ &0200
-LetterLAPos: 		equ &0310 
+LetterLAPos: 		equ &0300 
 ADRCOLORTBL:		equ &2000
 ADRATRIBUTETBL:		equ &1B00
 
