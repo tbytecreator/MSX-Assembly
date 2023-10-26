@@ -26,7 +26,8 @@ S0PATTERNTBL:		equ &0800
 ; =============================================================================
 S1CHARPATTERNTBL:	equ &0000
 S1NAMESTBL:		  	equ &1800
-LetterAPos: 		equ &0200 
+LetterCAPos: 		equ &0200
+LetterLAPos: 		equ &0310 
 ADRCOLORTBL:		equ &2000
 ADRATRIBUTETBL:		equ &1B00
 
@@ -35,9 +36,13 @@ ADRATRIBUTETBL:		equ &1B00
 ; =============================================================================
 LoadCharPatternTable:
 	ld bc,224            	; bytes a copiar
-  	ld de,LetterAPos  		; tabela de padrões na VRAM
+  	ld de,LetterCAPos  		; tabela de padrões na VRAM 
   	ld hl,CriptoFont 		; localização na RAM
-  	call LDIRVM             ; copio a tabela de padrões
+  	call LDIRVM             ; copio a tabela de padrões letras maiusculas
+	ld bc,224            	; bytes a copiar
+	ld de,LetterLAPos  		; tabela de padrões na VRAM
+  	ld hl,CriptoFont 		; localização na RAM
+  	call LDIRVM             ; copio a tabela de padrões letras minusculas
 ret
 ; =============================================================================
 
