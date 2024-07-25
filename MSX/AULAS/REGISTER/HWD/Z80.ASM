@@ -53,13 +53,13 @@ EndString:
 ret
 
 ; =============================================================================
-; Imprime um Numero
+; Imprime um Numero de 8 bits (0-255)
 ; =============================================================================
-; A => Numero a ser impresso (8 bits, 255)
+; A => Numero a ser impresso
 ; =============================================================================
 ; Altera => A,HL,D
 ; =============================================================================
-ImprimeNumero:
+ImprimeNumero8:
 	ld hl,NumCentenas
 	ld (hl),&00
 	ld hl,NumDezenas
@@ -110,4 +110,37 @@ ImprimeUnidades:
 	ld a,(NumUnidades)
 	add a,&30
 	call CHPUT
+ret
+
+; =============================================================================
+; Imprime um Numero de 16 bits (0-65535)
+; =============================================================================
+; HL => Numero a ser impresso
+; =============================================================================
+; Altera => NADA
+; =============================================================================
+ImprimeNumero16:
+	push af
+	push bc
+
+	ld bc,$0D0A ; IN HL = number. OUT HL = result, A = rest.
+	xor a
+	add hl,hl
+	rla
+	add hl,hl
+	rla
+	add hl,hl
+	rla
+HLDiv10Loop:		
+	add hl,hl
+	rla
+	cp c
+	jr c, HLDiv10Next
+	sub c
+	inc l
+HLDiv10Next:		
+	djnz HLDiv10Loop
+
+	pop bc
+	pop af
 ret
