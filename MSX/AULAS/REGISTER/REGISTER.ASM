@@ -34,7 +34,7 @@ loop2:
 	djnz loop2
 	call NovaLinha
 ExDE:
-	ld de,1000
+	ld hl,1000
 	call ImprimeNumero16
 	di
 	halt

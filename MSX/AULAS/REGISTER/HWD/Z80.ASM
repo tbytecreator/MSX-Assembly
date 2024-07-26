@@ -113,34 +113,80 @@ ImprimeUnidades:
 ret
 
 ; =============================================================================
+; Dividir um numero por outro 
+; =============================================================================
+; A => dividendo
+; C => divisor
+; =============================================================================
+; Altera => A (RESULTADO), B (RESTO)
+; =============================================================================
+Divide:
+    ld b,0			
+DivideLoop:
+    sub c
+    jr c, DivideDone
+    inc b 
+    jr DivideLoop
+DivideDone:
+    add a,C
+    dec b
+ret
+
+; =============================================================================
+; Converter um numero para string 
+; =============================================================================
+; 
+; =============================================================================
+; Altera => 
+; =============================================================================
+ConvertToString:
+    ld hl,Buffer 
+    ld b,0
+ConvertLoop:
+    ld a,e
+    ld c,10
+    call Divide
+    add a,'0'
+    ld (hl), a
+    inc hl
+    ld a,d
+	ld c,10
+    call Divide
+    add a,'0'
+    ld (hl), a
+    inc hl
+    ld a,b
+	or a
+    jr nz, ConvertLoop
+    ld (hl),0
+ret
+
+; =============================================================================
 ; Imprime um Numero de 16 bits (0-65535)
 ; =============================================================================
-; HL => Numero a ser impresso
+; DE => Numero a ser impresso
 ; =============================================================================
-; Altera => NADA
+; Altera => HL
 ; =============================================================================
 ImprimeNumero16:
-	push af
-	push bc
+    CALL ConvertToString	; Converte o número para string
+	CALL PrintBuffer		; Imprime a string na tela
+ret
 
-	ld bc,$0D0A ; IN HL = number. OUT HL = result, A = rest.
-	xor a
-	add hl,hl
-	rla
-	add hl,hl
-	rla
-	add hl,hl
-	rla
-HLDiv10Loop:		
-	add hl,hl
-	rla
-	cp c
-	jr c, HLDiv10Next
-	sub c
-	inc l
-HLDiv10Next:		
-	djnz HLDiv10Loop
-
-	pop bc
-	pop af
+; =============================================================================
+; Imprime o Buffer na tela
+; =============================================================================
+; Nao usa parametros
+; =============================================================================
+; Altera => 
+; =============================================================================
+PrintBuffer:
+    ld hl,Buffer
+PRINT_LOOP:
+    LD A,(HL)
+    OR A
+    RET Z
+    CALL CHPUT
+    INC HL
+    JR PRINT_LOOP
 ret
