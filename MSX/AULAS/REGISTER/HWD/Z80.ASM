@@ -118,47 +118,74 @@ ret
 ; A => dividendo
 ; C => divisor
 ; =============================================================================
-; Altera => A (RESULTADO), B (RESTO)
+; Altera => NumBuffer (resultado da divisao)
 ; =============================================================================
 Divide:
+	push af
+	push bc
+	push hl
+
     ld b,0			
 DivideLoop:
     sub c
-    jr c, DivideDone
+    jr c,DivideDone
     inc b 
     jr DivideLoop
 DivideDone:
-    add a,C
-    dec b
+    dec a
+	ld hl,NumBuffer
+	ld (hl),b
+	ld hl,NumResto
+	ld (hl),a
+
+	pop hl
+	pop bc
+	pop af
 ret
 
 ; =============================================================================
 ; Converter um numero para string 
 ; =============================================================================
-; 
+; DE => Numero a ser convertido
 ; =============================================================================
-; Altera => 
+; Altera => StringBuffer 
 ; =============================================================================
 ConvertToString:
-    ld hl,Buffer 
-    ld b,0
-ConvertLoop:
+	push hl
+	push bc
+	push af
+
+    ld hl,StringBuffer 
+ConvertLoopE:
     ld a,e
     ld c,10
     call Divide
-    add a,'0'
-    ld (hl), a
+	ld a,(NumBuffer)
+    add a,'0'			
+    ld (hl),a
     inc hl
+	ld a,(NumResto)
+	cp 0
+	jr nz, ConvertLoopE
+ConvertLoopD:
     ld a,d
 	ld c,10
     call Divide
+	ld a,(NumBuffer)
     add a,'0'
-    ld (hl), a
+    ld (hl),a
     inc hl
-    ld a,b
-	or a
-    jr nz, ConvertLoop
-    ld (hl),0
+    ld a,(NumResto)
+	cp 0
+    jr nz, ConvertLoopD
+ConvertFinal:
+	inc hl
+    ld (hl),13
+
+	pop af
+	pop bc
+	pop hl
+
 ret
 
 ; =============================================================================
@@ -170,23 +197,19 @@ ret
 ; =============================================================================
 ImprimeNumero16:
     CALL ConvertToString	; Converte o número para string
-	CALL PrintBuffer		; Imprime a string na tela
+	ld hl,StringBuffer		; Carrega o buffer com o número convertido
+	CALL ImprimeString		; Imprime a string na tela
 ret
 
 ; =============================================================================
 ; Imprime o Buffer na tela
 ; =============================================================================
-; Nao usa parametros
+; nao usa parametros
 ; =============================================================================
-; Altera => 
+; Altera => HL
 ; =============================================================================
 PrintBuffer:
-    ld hl,Buffer
-PRINT_LOOP:
-    LD A,(HL)
-    OR A
-    RET Z
-    CALL CHPUT
-    INC HL
-    JR PRINT_LOOP
+	ld hl,NumBuffer
+	ld a,(hl)
+	call CHPUT
 ret

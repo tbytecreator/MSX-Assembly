@@ -47,7 +47,6 @@ CONVERT_LOOP:
     RET
 
 DIVIDE:
-    ; Divide A por C, resultado em A, resto em B
     LD B, 0
 DIVIDE_LOOP:
     SUB C
@@ -55,7 +54,7 @@ DIVIDE_LOOP:
     INC B
     JR DIVIDE_LOOP
 DIVIDE_DONE:
-    ADD A,C
+    INC A
     DEC B
 RET
 
