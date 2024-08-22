@@ -1,0 +1,10 @@
+10 '----------------------------------
+20 ' PROGRAMA QUE INVERTE O TEXTO   
+30 '----------------------------------
+40 KEY OFF:BLOAD"INVERTE.BIN":A%=0
+50 DEFUSR=&HD000
+60 CLS
+70 A$="TEXTO INVERTIDO!"
+80 LOCATE (40-LEN(A$))/2,10
+90 ? USR(A$)
+100 IF INKEY$="" THEN FOR A%=1 TO 1000:NEXT A%:GOTO 80
