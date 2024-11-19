@@ -2,10 +2,6 @@
 ; Strings em PT-BR
 ; =======================================================================
 Message0:
-  db "Screen 0",13
+  db "Foi 1",13
 Message1:
-  db "Screen 1",13
-Message2:
-  db "Screen 2",13
-Message3:
-  db "Screen 3",13
+  db "Nao foi 1",13
