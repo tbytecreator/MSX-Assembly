@@ -12,6 +12,9 @@ org romArea
 ProgramStart:
 	call LimparTela
 	ld a,255
+	call ImprimeBinario
+	call NovaLinha
+	ld a,255
 	add a,1
 	jp c,ImprimeFoi1
 NaoFoi1:
