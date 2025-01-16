@@ -1,11 +1,10 @@
 ; ==============================================
-; PROGRAMA DE DUMP DE MEMORIA PARA MSX 2
+; PROGRAMA DE DUMP DE MEMORIA PARA MSX 
 ; ==============================================
 ; ADAPATADO DO CODIGO NO LIVRO GUIA DO 
 ; PROGRAMADOR MSX PAG 105 
 ; POR: MANOEL NETO
 ; ==============================================
-
 versao: equ 0X002D
 linlen: equ 0XF3B0
 valtyp: equ 0XF663
@@ -15,13 +14,11 @@ txtcgp: equ 0XF3B7
 erafnk: equ 0X00CC
 crtcnt: equ 0XF3B1
 hkeyi:  equ 0XFD9A
-
-    db 0XFE             ; cabecalho para binario
-    dw inicio           ; endereco de inicio
-    dw inidump+fimdump-dump+1
-    dw inicio           ; endereco de execucao
+    db 0XFE                     ; cabecalho para binario
+    dw inicio                   ; endereco de inicio
+    dw inidump+fimdump-dump+1   ; endereco de fim
+    dw inicio                   ; endereco de execucao
     org 0X9000
-
 inicio:
     di                  ; desabilita interrupcoes
     in a,(0XA8)         ; le os slots
@@ -56,18 +53,15 @@ inicio:
     call erafnk         ; apaga as teclas de funcao
     ei                  ; habilita interrupcoes
     ret                 ; e volta ao basic
-
 newhook:
     db 0XF7 
 slotnewhk:
     db 0X00
     dw dump
     db 0XC9
-
-inidump equ $
-
+inidump: 
+    ;equ $
     org 0X4000
-
 dump:
     ld hl,tempo         ; 
     ld a,(temporeal)    ; verifica se chegou
@@ -124,7 +118,6 @@ loopdump3:
     djnz loopdump1      ; continua ate terminar
     ei                  ; habilita interrupcoes
     ret                 ; volta ao BASIC
-
 ; rotina para imprimir um byte em hexadecimal
 hexa:
     push de             ; salva de
@@ -146,13 +139,11 @@ hexa2:
     add a,0X30          ; converte para ASCII
     out (0X98),a        ; imprime
     ret                 ; volta
-
 ; rotina para imprimir um espaco
 espaco:
     ld a,0X20           ; a=espaco
     out (0X98),a        ; imprime
     ret                 ; volta
-
 ; rotina para preparar o VDP para escrita
 setvdpwt:
     ld a,(versao)       ; versao do MSX no acc
@@ -170,12 +161,11 @@ wrtvram1:
     or 0X40             ;
     out (0X99),a        ;
     ret                 ; volta
-
 posini:
     dw 0
 numdigs:
     db 0
 temporeal:
     db 0
-
-fimdump equ $
+fimdump:
+    ;equ $
