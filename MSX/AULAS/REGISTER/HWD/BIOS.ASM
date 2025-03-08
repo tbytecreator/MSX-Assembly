@@ -190,14 +190,14 @@ ENDFOR:		equ 0xF6A1			; Usada pelo interpretador BASIC (loops FOR)
 DATLIN:		equ 0xF6A3			; Linha do programa BASIC do item DATA atual
 SUBFLG:		equ 0xF6A5			; Usada pelo interpretador BASIC
 FLGINP:		equ 0xF6A6			; BASIC: distingue INPUT (0) de READ (1-255)
-TEMP:		  equ 0xF6A7			; Variável temporária (interpretador BASIC)
+TEMP:		  equ 0xF6A7		; Variável temporária (interpretador BASIC)
 PTRFLG:		equ 0xF6A9			; Usada pelo interpretador BASIC
 AUTFLG:		equ 0xF6AA			; Flag do modo AUTO do BASIC
 AUTLIN:		equ 0xF6AB			; Número da linha AUTO atual (BASIC)
 AUTINC:		equ 0xF6AD			; Incremento atual do AUTO (BASIC)
 SAVTXT:		equ 0xF6AF			; Usado pelo manipulador de erro (BASIC)
 ERRLIN:		equ 0xF6B3			; Número da linha que gerou o erro (BASIC)
-DOT:		  equ 0xF6B5			; Usada pelo interpretador BASIC
+DOT:		  equ 0xF6B5		; Usada pelo interpretador BASIC
 ERRTXT:		equ 0xF6B7			; Usada pelo interpretador BASIC (RESUME)
 ONELIN:		equ 0xF6B9			; Usada pelo interpretador BASIC (ON ERROR GOTO)
 ONEFLG:		equ 0xF6BB			; Usada pelo interpretador BASIC (ON ERROR GOTO)
@@ -225,7 +225,7 @@ TRCFLG:		equ 0xF7C4			; Ativado quando TRON está ligado (BASIC)
 FBUFFR:		equ 0xF7C5			; Buffer de conversão numérica (BASIC)
 DECTM2:		equ 0xF7F2			; Variável temporária (interpretador BASIC)
 DECCNT:		equ 0xF7F4			; Variável temporária (interpretador BASIC)
-DAC:		  equ 0xF7F6			; Buffer de avaliação de expressão do BASIC
+DAC:		  equ 0xF7F6		; Buffer de avaliação de expressão do BASIC
 ARGUSR:		equ 0xF7F8			; ?
 HOLD8:		equ 0xF806			; Buffer temporário de multiplicação (BASIC)
 ARG:		  equ 0xF847			; Buffer de avaliação de expressão do BASIC
