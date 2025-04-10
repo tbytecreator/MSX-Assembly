@@ -14,6 +14,11 @@ ProgramStart:
 	ld a,(0XC000)	; Este e o peek do asm 
 	ld (0XC000),a	; Este e o poke do asm
 	call ImprimeDecimal
+	call NovaLinha
+EnderecamentoIndireto:
+	ld hl,0xC000	; Endereco de memoria
+	ld a,(hl)		; Pega o valor do endereco
+	call ImprimeDecimal
 Fim:
 	call CHGET
 	di
