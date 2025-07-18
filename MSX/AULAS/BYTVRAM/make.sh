@@ -1,6 +1,6 @@
 echo ====== Apagando a ROM antiga =====
-rm rom/bytvram.rom
+rm bytvram.bin
 echo ======= Compilando nova ROM ======
-pasmo bytvram.asm rom/bytvram.rom
+pasmo --msx bytvram.asm bytvram.bin
 echo ============= Pronto =============
 openmsx -machine Gradiente_Expert_GPC-1 -ext DDX_3.0 -diska .

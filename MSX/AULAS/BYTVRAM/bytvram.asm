@@ -1,16 +1,12 @@
 ; =====================================
 ; Copiando bytes para VRAM
 ; =====================================
-include "HWD/BIOS.ASM"
+include "BIOS.ASM"
 
-org 0xD000
-	db 0XFE	
- 	dw STARTCODE
- 	dW ENDCODE
- 	dW STARTCODE
-ProgramStart:
+org 0xC000
+STARTCODE:
 	ld hl,0x6912		; Endereco de memoria VRAM
-	ld a,(0X0C00)		; Pego o valor do endereco
+	ld a,(0XC00A)		; Pego o valor do endereco
 	call WRTVRM
 ; =====================================
 ; FIM PROGRAMA
