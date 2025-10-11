@@ -1,5 +1,5 @@
 ; =====================================
-; Copiando bytes para VRAM
+; variaveis do basic 
 ; =====================================
 include "BIOS.ASM"
 
@@ -9,8 +9,10 @@ org 0xD000
  	dW ENDCODE
  	dW STARTCODE
 STARTCODE:
-	ld hl,0x1B01	; Endereco de memoria VRAM
-	ld a,(0xC00A)	; Pego o valor do endereco
+	ld a,(0xF7F8)
+	ld e,a	; E = variavel i%
+	ld a,(0xF7F9)
+	ld d,a	; D = variavel i%
 	call WRTVRM		; gravo o byte na VRAM
 ret					; retorna ao BASIC
 ; =====================================
