@@ -1,21 +1,20 @@
 ; =====================================
-; variaveis do basic 
+; BASIC variables
 ; =====================================
-include "BIOS.ASM"
-
-org 0xD000
-	db 0xFE	
- 	dw STARTCODE
- 	dW ENDCODE
- 	dW STARTCODE
+org 0xC000
+    db 0xFE	
+    dw STARTCODE
+    dw ENDCODE
+    dw STARTCODE
 STARTCODE:
-	ld a,(0xF7F8)
-	ld e,a	; E = variavel i%
-	ld a,(0xF7F9)
-	ld d,a	; D = variavel i%
-	call WRTVRM		; gravo o byte na VRAM
-ret					; retorna ao BASIC
+	LD HL,(0XF7F8)
+	LD A,(HL)		
+	LD (0XF7F8),A
+	INC HL
+	LD A,(HL)		
+	LD (0XF7F9),A
+ret
 ; =====================================
-; FIM PROGRAMA
+; END OF PROGRAM
 ; =====================================
 ENDCODE:

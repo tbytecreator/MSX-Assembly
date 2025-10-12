@@ -1,6 +1,0 @@
-10 BLOAD "basvar.bin"
-20 SCREEN 1:KEY OFF
-30 DEFUSR=&HD000
-40 i% = 1199 
-50 print USR(0)
-60 END
