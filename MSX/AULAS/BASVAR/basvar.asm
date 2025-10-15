@@ -30,9 +30,9 @@ ParamInteiro:
 	ld a,17 			;a string da mensagem 1 tem 17 bytes
 	ld (NBYTES),a
 	ld hl,Msg1
-	ld a,l
+	ld a,0xEE
 	ld (ENDSTR),a
-	ld a,h
+	ld a,0x21
 	ld (ENDSTR+1),a	
 	jp EndProgram
 ParamString:
@@ -79,7 +79,7 @@ ret
 Msg1:
   	db "Parametro inteiro",13
 Msg2:
-	db "Pametro string",13
+	db "Parametro string",13
 Msg3:
 	db "Precisao simples",13
 Msg4:

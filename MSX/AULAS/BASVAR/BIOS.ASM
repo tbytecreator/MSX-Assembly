@@ -226,7 +226,7 @@ FBUFFR:		equ 0xF7C5			; Buffer de conversão numérica (BASIC)
 DECTM2:		equ 0xF7F2			; Variável temporária (interpretador BASIC)
 DECCNT:		equ 0xF7F4			; Variável temporária (interpretador BASIC)
 DAC:		equ 0xF7F6			; Buffer de avaliação de expressão do BASIC
-ARGUSR:		equ 0xF7F8			; ?
+ARGUSR:		equ 0xF7F8			; Argumento da função USR (BASIC)
 HOLD8:		equ 0xF806			; Buffer temporário de multiplicação (BASIC)
 ARG:		equ 0xF847			; Buffer de avaliação de expressão do BASIC
 RNDX:		equ 0xF857			; Contém o último número aleatório (precisão dupla)
