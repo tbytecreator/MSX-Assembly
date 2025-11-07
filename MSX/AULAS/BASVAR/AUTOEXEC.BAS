@@ -1,9 +1,4 @@
-10 BLOAD "ptype.bin"
+10 BLOAD "levar.bin"
 20 DEFUSR=&HC000
-25 ON ERROR GOTO 100
-30 A=USR(&HF663)
-40 PRINT "Valor retornado:";A
-50 END
-100 IF ERR=6 THEN PRINT "Erro de Overflow!"
-110 IF ERR=5 THEN PRINT "Erro de Illegal Function Call!"
-120 RESUME NEXT
+30 A=USR(&HF3AE): ' endereco de linlen40'
+40 PRINT "Valor da variavel:";A
