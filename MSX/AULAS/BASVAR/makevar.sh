@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
-BIN="levar.bin"
+BIN="levar.rom"
 ASM="levar.asm"
 # Se já existir, remove o binário antigo
 if [ -f "$BIN" ]; then
@@ -9,9 +9,9 @@ if [ -f "$BIN" ]; then
 fi
 # Compila
 printf 'Compilando %s -> %s\n' "$ASM" "$BIN"
-if ! pasmo --msx "$ASM" "$BIN"; then
+if ! pasmo "$ASM" "$BIN"; then
   echo "Erro: compilação falhou"
   exit 1
 fi
 # Executa no emulador
-exec openmsx -machine Gradiente_Expert_GPC-1 -ext DDX_3.0 -diska .
+exec openmsx -machine Gradiente_Expert_GPC-1 -cart "$BIN"
