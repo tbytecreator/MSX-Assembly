@@ -1,7 +1,7 @@
 @echo off
 echo ====== Apagando a ROM antiga =====
-del levar.bin
+del letype.bin
 echo ======= Compilando nova ROM ======
-pasmo --msx levar.asm levar.bin
+pasmo --msx letype.asm letype.bin
 echo ============= Pronto =============
 openmsx -machine Gradiente_Expert_GPC-1 -ext DDX_3.0 -diska .
