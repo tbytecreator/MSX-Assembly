@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
-BIN="leorig.bin"
-ASM="leorig.asm"
+BIN="letype.bin"
+ASM="letype.asm"
 # Se já existir, remove o binário antigo
 if [ -f "$BIN" ]; then
   printf 'Removendo %s existente...\n' "$BIN"
