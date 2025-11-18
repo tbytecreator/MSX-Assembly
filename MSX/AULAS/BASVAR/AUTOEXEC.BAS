@@ -1,0 +1,167 @@
+0010 ' =====================================
+0020 ' MENU TBYTECREATOR MSX 1
+0030 ' =====================================
+0040 SCREEN 1:COLOR 2,0,0:KEYOFF:OP=0:MX=0
+0050 ST=0 :' DRIVE: 0=A, 1=B, 2=C, 3=D
+0070 ' =====================================
+0080 ' CARREGA ARQUIVOS EM ARRAY
+0090 ' =====================================
+0100 CLEAR 2048:DIM A$(25,2)
+0110 A1=PEEK(62290)*256+PEEK(62289):'ENDEREÇO DMA 
+0120 L=0:'CONTADOR DE ARQUIVOS
+0130 DD$=DSKI$(ST,1):'O DRIVE EH 360 OU 720?
+0140 D=PEEK(A1)
+0150 IF D=248 THEN Z=5 ELSE Z=7
+0160 FR=DSKF(0):'ESPACO LIVRE
+0170 FOR SK=0 TO 6
+0180   AD=A1
+0190   DD$=DSKI$(ST,SK+Z):'LE O SETOR
+0200   FOR P=0 TO 15
+0210     IF PEEK(AD)<32 OR PEEK(AD)>126 THEN AD=AD+32:GOTO 370
+0220     P$=""
+0230     FOR W=0 TO 10:'LE O NOME
+0240       P$=P$+CHR$(PEEK(AD))
+0250       AD=AD+1
+0260     NEXT
+0270     IF RIGHT$(P$,3)<>"BAS" THEN 360
+0280     IF LEFT$(P$,8)="AUTOEXEC" THEN 360
+0290     FOR I=1 TO LEN(P$):IF MID$(P$,I,1)=" " THEN MID$(P$,I,1)="":NEXT I
+0300     A$(L,1)=LEFT$(P$,8)
+0310     FOR I=1 TO LEN(P$)
+0320       IF MID$(P$,I,1) <> " " THEN MID$(P$,I,1)=CHR$(ASC(MID$(P$,I,1))+32):
+0330     NEXT I
+0340     A$(L,2)=LEFT$(P$,8)
+0350     L=L+1:MX=MX+1
+0360     AD=AD+21
+0370   NEXT
+0380 NEXT
+
+0400 ' =====================================
+0410 ' ACERTA AS FORMAS DOS CARACTERES
+0420 ' ===================================== 
+0430 FOR C=&H41*8 TO &H5A*8
+0440   VPOKE C+256,VPEEK(C)
+0450 NEXT C
+
+0500 ' =====================================
+0510 ' MUDA AS CORES DE FUNDO
+0520 ' =====================================
+0530 CL=&H12 : ' TEXTO PRETO/FUNDO VERDE
+0540 VPOKE 8204,CL
+0550 VPOKE 8205,CL
+0560 VPOKE 8206,CL
+0570 VPOKE 8207,CL
+0580 VPOKE 8219,CL/16+(CL-(CL AND &HF0))*16
+
+0600 ' =====================================
+0610 ' DESENHA A TELA 
+0620 ' =====================================
+0630 GOSUB 9000:'DESENHA O HEADER
+0640 GOSUB 8000:'DESENHA O CORPO
+0650 GOSUB 10000:'DESENHA O FOOTER
+0660 CY=4:GOSUB 5000:'DESENHA OPCOES DO MENU
+
+0700 ' ===================================== 
+0710 ' LOOP PRINCIPAL
+0720 ' =====================================
+0730 CY=4:GOSUB 7000:'DESENHA SELECAO
+0740 K$=INKEY$:IF K$="" THEN 740
+0750 K=ASC(k$)
+0760 IF K=30 OR K=31 THEN CY=4:GOSUB 6000 
+0770 IF K=31 THEN OP=(OP+1) MOD MX
+0780 IF K=30 THEN OP=OP-1:IF OP=-1 THEN OP=MX-1
+0790 IF K=13 THEN 2000 : ' EXECUTA A OPCAO
+0800 IF K=27 THEN CLS:END
+0810 IF K$="B" OR K$="b" THEN ST=1:GOTO 60
+0899 GOTO 730
+
+2000 ' =====================================
+2010 ' EXECUTA A OPCAO
+2020 ' =====================================
+2030 OP$ = A$(OP,1) 
+2040 RUN OP$+".BAS"
+2999 END
+
+3000 ' =====================================
+3010 ' CRIA UMA LINHA CAIXA PARA BAIXO
+3020 ' =====================================
+3030 LOCATE 0,CY:PRINT CHR$(1)+CHR$(&H58);
+3040 FOR I = 1 TO 31
+3050   LOCATE I,CY
+3060   PRINT CHR$(1)+CHR$(&H57);
+3070 NEXT I
+3080 LOCATE 32,CY:PRINT CHR$(1)+CHR$(&H59);
+3090 RETURN
+
+4000 ' =====================================
+4010 ' CRIA UMA LINHA DE CAIXA PARA CIMA
+4020 ' =====================================
+4030 LOCATE 0,CY:PRINT CHR$(1)+CHR$(&H5A);
+4040 FOR I = 1 TO 31
+4050   LOCATE I,CY
+4060   PRINT CHR$(1)+CHR$(&H57);
+4070 NEXT I
+4080 LOCATE 32,CY:PRINT CHR$(1)+CHR$(&H5B);
+4090 RETURN
+
+5000 ' =====================================
+5010 ' DESENHA AS OPCOES DO MENU
+5020 ' =====================================
+5030 FOR F=0 TO MX
+5050   LOCATE 1,F+CY:PRINT A$(F,1)
+5070 NEXT F 
+5080 RETURN
+
+6000 ' =====================================
+6010 ' DESENHA SELECAO
+6020 ' =====================================
+6030 LOCATE 1,OP+CY:PRINT A$(OP,1)
+6040 RETURN
+
+7000 ' =====================================
+7010 ' DESENHA SELECAO INVERTIDA
+7020 ' =====================================
+7030 LOCATE 1,OP+CY:PRINT A$(OP,2)
+7040 RETURN
+
+8000 ' =====================================
+8010 ' DESENHA O CORPO
+8020 ' =====================================
+8030 CY=3:GOSUB 3000:'DESENHA CAIXA P/ BAIXO
+8040 FOR I = 4 TO 18
+8050   LOCATE 00,I:PRINT CHR$(1)+CHR$(&H56);
+8060   LOCATE 32,I:PRINT CHR$(1)+CHR$(&H56);
+8070 NEXT I
+8080 CY=19:GOSUB 4000:'DESENHA CAIXA P/ CIMA
+8090 RETURN
+
+9000 ' =====================================
+9010 ' DESENHA HEADER
+9020 ' =====================================
+9030 CY=0:GOSUB 3000:'DESENHA CAIXA P/ BAIXO
+9040 LOCATE 0,1:PRINT CHR$(1)+CHR$(&H56)
+9050 LOCATE 1,1:PRINT "TBC EXECUTOR          <ESC>"
+9060 LOCATE 32,1:PRINT CHR$(1)+CHR$(&H56)
+9070 CY=2:GOSUB 4000:'DESENHA CAIXA P/ CIMA
+9080 RETURN
+
+10000 ' =====================================
+10010 ' DESENHA O FOOTER
+10020 ' =====================================
+10030 CY=20:GOSUB 3000:'DESENHA CAIXA P/ BAIXO
+10040 LOCATE 0,21:PRINT CHR$(1)+CHR$(&H56);
+10050 LOCATE 2,21:IF ST=0 THEN PRINT "<A:>" ELSE PRINT "<B:>";
+10060 FR$=MID$(STR$(FR),2)
+10070 LOCATE 6,21:PRINT "FREE SPACE:";FR$;"KB";
+10080 LOCATE 32,21:PRINT CHR$(1)+CHR$(&H56);
+10090 CY=22:GOSUB 4000:'DESENHA CAIXA P/ CIMA
+10100 RETURN
+
+12000 ' =====================================
+12010 ' NAO HA ARQUIVOS
+12020 ' =====================================
+12025 CLS
+12030 FOR I=1 TO 10
+12040   ?A$(I,1);A$(I,2)
+12060 NEXT I
+12070 END
