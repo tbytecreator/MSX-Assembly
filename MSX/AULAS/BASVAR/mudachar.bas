@@ -1,0 +1,24 @@
+0010 ' ------------------------------------
+0020 ' MUDACHAR.BAS
+0030 ' ROTINA ASSEMBLY PARA MUDAR UMA STRING
+0040 ' marmsx.msxall.com
+0050 ' ------------------------------------
+0060 GOSUB 1000: 'limpa tela
+0070 FOR E=&HC000 TO &HC012
+0080 READ A$
+0090 POKE E,VAL("&H"+A$)
+0100 NEXT
+0110 DEFUSR=&HC000
+0120 LOCATE 1,4:? "UM CARACTER PARA DIREITA:";USR("marmsx")
+0130 LOCATE 27,21:OP$=INPUT$(1)
+0140 RUN"AUTOEXEC.BAS"
+0150 DATA FE,03,C0,1A,B7,C8,47,EB,23,5E
+0160 DATA 23,56,1A,3C,12,13,10,FA,C9
+
+1000 ' ------------------------------
+1010 ' LIMPA A AREA UTIL DA TELA 
+1020 ' ------------------------------
+1030 FOR I = 4 TO 18
+1040   LOCATE 1, I:? STRING$(27," ");
+1050 NEXT I
+1060 RETURN
