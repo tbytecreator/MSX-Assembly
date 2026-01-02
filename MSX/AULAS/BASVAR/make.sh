@@ -14,4 +14,4 @@ if ! pasmo --msx "$ASM" "$BIN"; then
   exit 1
 fi
 # Executa no emulador
-exec openmsx -machine Gradiente_Expert_GPC-1 -ext DDX_3.0 -diska .
+flatpak run org.openmsx.openMSX -machine Gradiente_Expert_GPC-1 -ext DDX_3.0 -diska .
