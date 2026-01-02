@@ -171,7 +171,7 @@ BUFMIN:		equ 0xF55D			; Utilizado na entrada de linhas BASIC
 BUF:		equ 0xF55E		    ; Utilizado na entrada de linhas BASIC (259)
 TTYPOS:		equ 0xF661			; Posição de tela atual, usada pelo PRINT
 DIMFLG:		equ 0xF662			; Usado pelo interpretador BASIC na instrução DIM
-VALTYP:		equ 0xF663			; Usado pelo interpretador BASIC
+VALTYP:		equ 0xF663			; Usado pelo interpretador BASIC tipo do parametro passado via USR
 DORES:		equ 0xF664			; Usada pelo interpretador BASIC (linhas DATA)
 DONUM:		equ 0xF665			; Usada pelo interpretador BASIC
 CONTXT:		equ 0xF666			; Usada pelo interpretador BASIC

@@ -3,14 +3,7 @@
 0030 ' ---------------------------------
 0035 gosub 1000:'limpa a area util da tela
 0040 def fn hx$(e)=right$("00"+hex$(peek(e+1)),2)+right$("00"+hex$(peek(e)),2)
-0050 locate 01,04:?"TXTTAB:";fn hx$(&hf676)
-0060 locate 01,05:?"VARTAB:";fn hx$(&hf6c2)
-0070 locate 01,06:?"ARYTAB:";fn hx$(&hf6c4)
-0080 locate 01,07:?"STREND:";fn hx$(&hf6c6)
-0090 locate 01,08:?"SKTOP :";fn hx$(&hf674)
-0100 locate 01,09:?"MEMSIZ:";fn hx$(&hf672)
-0110 locate 01,10:?"FRETOP:";fn hx$(&hf69b)
-0120 locate 01,11:?"HIMEM :";fn hx$(&hfc4a)
+0050 locate 01,04:?"VALTYP (&HF663):";fn hx$(&hf663)
 0140 locate 27,21:op$=input$(1)
 0150 run"AUTOEXEC.BAS"
 
