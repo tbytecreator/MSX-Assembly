@@ -27,7 +27,7 @@
 0490 GOTO 800
 
 0500 ' === TESTE STRING ===
-0510 A$="msx e o melhor"
+0510 A$="MSX EH O MELHOR"
 0520 T$=USR(A$)
 0530 GOTO 1000
 
