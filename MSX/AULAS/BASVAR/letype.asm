@@ -33,17 +33,17 @@ STARTCODE:
 	ld (VALOR2),a       ; Armazena o valor em VALOR2 (0xE032)
 	jr continue
 handle_string:
-	ld hl,STRDESC      	; Lê o endereço do descritor da string
-	ld a,(hl)           ; Lê o número de bytes da string do basic
-	ld (NUMBYTES),a     ; Armazena o número de bytes da string do basic
+	ld hl,(STRDESC)    	; HL = ponteiro para o descritor da string (conteúdo de F7F8/F7F9)
+	ld a,(hl)           ; Lê o tamanho da string (byte 0 do descritor)
+	ld (NUMBYTES),a     ; Armazena o tamanho em NUMBYTES (E033)
 	inc hl
-	ld a,(hl)           ; Lê o endereço do LSB da string do basic
-	ld (STRLSB),a       ; Armazena o endereço do LSB da string do basic
+	ld a,(hl)           ; Lê o LSB do endereço da string (byte 1 do descritor)
+	ld (STRLSB),a       ; Armazena em STRLSB (E034)
 	inc hl
-	ld a,(hl)           ; Lê o endereço do MSB da string do basic
-	ld (STRMSB),a       ; Armazena o endereço do MSB da string do basic
+	ld a,(hl)           ; Lê o MSB do endereço da string (byte 2 do descritor)
+	ld (STRMSB),a       ; Armazena em STRMSB (E035)
 continue:
-    ld hl,TYPE          ; armazena o endereço do retorno em HL                     ; Retorna ao BASIC com o tipo em HL      
+    ld hl,TYPE          ; HL = endereço do tipo (retorno ao BASIC)
+	ret
 ENDCODE:
-ret
 ;=============================================================================
