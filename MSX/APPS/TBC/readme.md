@@ -1,4 +1,4 @@
-# TBC - Tbyte Commander: Manual de Uso
+# TBC - TByteCreator Commander: Manual de Uso
 
 TBC é um gerenciador de arquivos de dois painéis, inspirado no Norton
 Commander, para **MSX 1 com MSX-DOS 1**.
