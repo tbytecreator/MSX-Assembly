@@ -11,6 +11,10 @@ Documentos importantes para o desenvolvimento em Assembly Z80 na arquitetura MSX
 
 ### APPS
 
+#### PCURSOR (MSX>APPS>TBC)
+
+Um cursor piscante para o seu MSX. O código é baseado no programa de Luiz Carlos Bittencourt publicado na revista *Clube MSX No. 9*.
+
 #### TByteCreator Commander (MSX>APPS>TBC)
 
 Um aplicativo estilo Norton Commander escrito em Assembly do Z80.
