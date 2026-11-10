@@ -3,21 +3,15 @@
 
  Exemplos em Assembly Z80 para MSX
 
-# HELLO
+## DOCS
 
- Nosso primeiro programa em Assembly
- Aula relacionada:
- https://www.youtube.com/watch?v=CF3NILdgsYM
+Documentos importantes para o desenvolvimento em Assembly Z80 na arquitetura MSX.
 
-# CRIPTO
+## Códigos fonte para o MSX
 
- Criptologic para o processador Z80.
- CPC => código em assembly do Amstrad CPC
- MSX => código em assembly do MSX
+### APPS
 
- # TByteCreator Commander
- 
- ##MSX>APPS>TBC
+#### TByteCreator Commander (MSX>APPS>TBC)
 
- Um aplicativo estilo Norton Commander escrito em Assembly do Z80.
- MSX>APPS>TBC
+Um aplicativo estilo Norton Commander escrito em Assembly do Z80.
+MSX>APPS>TBC
