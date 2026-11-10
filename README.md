@@ -41,7 +41,9 @@ Nesta aula integramos o código escrito em assembly com os programas em BASIC.
 Nesta aula aprendemos a disponibilizar variáveis do BASIC para o assembly.
 
 <https://www.youtube.com/watch?v=9viYJwfdaX0&list=PLM6UACsvLoSA3lfKziNe_JP_sZkuvF-qs&index=18>
+
 <https://www.youtube.com/watch?v=AT99Jc0Q4OI&list=PLM6UACsvLoSA3lfKziNe_JP_sZkuvF-qs&index=19>
+
 <https://www.youtube.com/watch?v=GDSZMh-UomM&list=PLM6UACsvLoSA3lfKziNe_JP_sZkuvF-qs&index=20>
 
 #### BYTVRAM
@@ -83,4 +85,5 @@ Nestas aulas aprendemos sobre endereçamento direto e indireto.
 Nesta aula botamos em prática tudo que aprendemos sobre registradores.
 
 <http://youtube.com/watch?v=UbMBCVg6J5g&list=PLM6UACsvLoSA3lfKziNe_JP_sZkuvF-qs&index=9>
+
 <https://www.youtube.com/watch?v=m-QCzIQFC-c&list=PLM6UACsvLoSA3lfKziNe_JP_sZkuvF-qs&index=10>
